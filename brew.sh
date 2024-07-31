@@ -19,7 +19,7 @@ brew cleanup
 
 # Installing GNU coreutils, findutils, gnu-sed and awk to replace the versions
 # which come with macOS because they are outdated
-gnubinaries=(coreutils findutils gawk gnu-sed)
+gnubinaries=(coreutils diffutils findutils gawk gnu-sed)
 log "Installing latest GNU binaries"
 for gnubinary in "${gnubinaries[@]}"; do
   if brew list --formula | grep -q "^$gnubinary\$"; then
@@ -39,7 +39,7 @@ if ! grep -F -q "$(brew --prefix)/bin/bash" /etc/shells; then
 fi
 
 # Install some useful binaries
-binaries=(bat fzf htop jq nvm ripgrep shellcheck tree wget)
+binaries=(bat fzf htop jq neovim nvm ripgrep shellcheck tree wget)
 for binary in "${binaries[@]}"; do
   if brew list --formula | grep -q "^$binary\$"; then
     log "$binary is already installed. Skipping..."
@@ -48,5 +48,22 @@ for binary in "${binaries[@]}"; do
     brew install "$binary"
   fi
 done
+
+# List of applications to install
+apps=(docker google-chrome google-cloud-sdk iterm2 neovim spotify visual-studio-code)
+for app in "${apps[@]}"; do
+  if brew list --cask | grep -q "^$app\$"; then
+    log "$app is already installed. Skipping..."
+  else
+    log "Installing $app"
+    brew install --cask "$app"
+  fi
+done
+
+# Redo update and clean up again for safe measure
+brew update
+brew upgrade
+brew upgrade --cask
+brew cleanup
 
 log "Done."
