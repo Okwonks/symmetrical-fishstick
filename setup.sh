@@ -19,3 +19,18 @@ EOF
 repodir="${HOME}/symmetrical-fishstick"
 
 # Check if dir exists, if not download/clone the repo
+if [ ! -f "$repodir" ]; then
+  log "Dotfiles dir not found.  Cloning..."
+  git clone https://github.com/Okwonks/symmetrical-fishstick.git "${HOME}"
+fi
+
+configFiles=(vimrc zshrc)
+for file in "${configFiles[@]}"; do
+  log "Creating symlink to .$file in home..."
+  ln -sf "$repodir/.$file" "${HOME}/.file"
+done
+
+log "Running brew installations..."
+./brew.sh
+
+log "Setup complete :¬)"
