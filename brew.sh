@@ -55,8 +55,19 @@ for app in "${apps[@]}"; do
   if brew list --cask | grep -q "^$app\$"; then
     log "$app is already installed. Skipping..."
   else
-    log "Installing $app"
+    log "Installing $app..."
     brew install --cask "$app"
+  fi
+done
+
+# Fonts for iTerm2 and neovim
+fonts=(font-caskaydia-cove-nerd-font font-code-new-roman-nerd-font font-inconsolata)
+for font in "${fonts[@]}"; do
+  if brew list --cask | grep -q "^$font\$"; then
+    log "$font is already installed. Skipping..."
+  else
+    log "Installing $font..."
+    brew install --cask "$font"
   fi
 done
 
