@@ -30,7 +30,10 @@ for file in "${configFiles[@]}"; do
   ln -sf "$repodir/.$file" "${HOME}/.file"
 done
 
+pushd "$repodir" >/dev/null
+
 log "Running brew installations..."
 ./brew.sh
 
 log "Setup complete :¬)"
+popd >/dev/null
