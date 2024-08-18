@@ -27,7 +27,7 @@ fi
 configFiles=(vimrc zshrc)
 for file in "${configFiles[@]}"; do
   log "Creating symlink to .$file in home..."
-  ln -sf "$repodir/.$file" "${HOME}/.file"
+  ln -sf "$repodir/.$file" "${HOME}/.$file"
 done
 
 pushd "$repodir" >/dev/null
