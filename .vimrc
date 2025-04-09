@@ -61,6 +61,7 @@ set hlsearch
 set mouse=a
 
 autocmd FileType yaml,yml,javascript,jsx,ts,tsx setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType java setlocal ts=4 sts=4 sw=4 expandtab
 
 " PLUGINS ---------------------------------------------------------------- {{{
 
@@ -73,11 +74,14 @@ call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'tomasiser/vim-code-dark'
   Plug 'wakatime/vim-wakatime'
+  Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " }}}
 
-colorscheme codedark
+set termguicolors
+filetype plugin indent on
+colorscheme onedark
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
@@ -89,21 +93,41 @@ nnoremap <silent> <C-f> :FZF<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>tn :tabnew<CR>
 nnoremap <silent> <Leader>vs :vsplit<CR>
+nnoremap <leader>fw :Lines<CR>
 
 nnoremap <leader>ln o<esc>
 
 " }}}
 
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\}
 let g:ale_sign_error='❌'
 let g:ale_sign_warning='⚠️'
 let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
 " STATUS LINE ------------------------------------------------------------ {{{
+
+" Mapping modes to display on status line
+let g:currentmode={
+ \ 'n' : 'NORMAL ',
+ \ 'v' : 'VISUAL ',
+ \ 'V' : 'V-LINE ',
+ \ 'i' : 'INSERT ',
+ \ 'R' : 'R ',
+ \ 'Rv' : 'V-REPLACE ',
+ \ 'c' : 'COMMAND ',
+ \}
 
 " Clear status line when vimrc is reloaded.
 set statusline=
+set noshowmode
+
+set statusline+=%{(mode()=='n')?'\ \ NORMAL\ \':''}
+set statusline+=%{(mode()=='i')?'\ \ INSERT\ \':''}
+set statusline+=%{(mode()=='c')?'\ \ COMMAND\':''}
+set statusline+=%{(mode()=='v')?'\ \ VISUAL\ \':(mode()=='V')?'\ \ VISUAL\ \':''}
 
 " Status line left side.
 set statusline+=\ %f\ %M\ %Y\ %R
@@ -118,3 +142,13 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c
 set laststatus=2
 
 " }}}
+
+" command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), fzf#vim#with_preview(), <bang>0)
+
+augroup CustomFzfRg
+  autocmd!
+  autocmd VimEnter * command! -bang -nargs=* Rg call fzf#vim#grep(
+        \ "rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>),
+        \ fzf#vim#with_preview(),
+        \ <bang>0)
+augroup END
