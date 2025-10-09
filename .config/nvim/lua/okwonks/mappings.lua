@@ -13,3 +13,7 @@ map("n", "<leader>n", "<cmd>set nu!<CR>")
 map("n", "<leader>rn", "<cmd>set rnu!<CR>")
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
+
+-- nvimtree
+map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })

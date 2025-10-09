@@ -1,5 +1,10 @@
 local o = vim.o
 
+-------- CLIPBOARD --------
+o.clipboard = "unnamedplus"
+o.cursorline = true
+o.cursorlineopt = "number"
+
 ----- SPACING -----
 o.expandtab = true
 o.shiftwidth = 2

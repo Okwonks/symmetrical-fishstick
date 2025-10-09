@@ -7,7 +7,8 @@ return {
         ensure_installed = {
           "go", "javascript", "typescript", "c", "lua",
           "vim", "vimdoc", "query", "markdown",
-          "markdown_inline", "bash", "jsdoc"
+          "markdown_inline", "bash", "jsdoc",
+          "tsx"
         },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
