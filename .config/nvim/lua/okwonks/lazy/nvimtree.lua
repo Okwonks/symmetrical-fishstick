@@ -12,6 +12,9 @@ return {
         width = 30,
         preserve_window_proportions = true,
       },
+      update_focused_file = {
+        enable = true,
+      },
     })
   end,
 }
