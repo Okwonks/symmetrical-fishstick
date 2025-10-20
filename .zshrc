@@ -112,7 +112,7 @@ export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --preview 'bat --color=always {}'"
 
-export DEV_WORK=~/Desktop/dev-repos
+export DEV_WORK=~/Developer/okwonks
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
