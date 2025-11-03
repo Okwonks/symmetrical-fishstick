@@ -32,3 +32,6 @@ map("n", "<leader>bp", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer left
 -- nvimtree
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
 map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+
+-- toggleterm
+map("n", "<C-t>", "<cmd>ToggleTerm<CR>", { silent = true, desc = "Open terminal" })
