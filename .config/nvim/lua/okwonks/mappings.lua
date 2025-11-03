@@ -19,6 +19,10 @@ map("n", "<leader>x", utils.smart_close_buffer, { desc = "Close buffer safely" }
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
+-- Comment
+map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
+
 -- bufferline
 map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { silent = true, desc = "Next buffer" })
 map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { silent = true, desc = "Previous buffer" })
