@@ -20,5 +20,12 @@ return {
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
     vim.keymap.set('n', '<leader>fz', builtin.current_buffer_fuzzy_find, { desc = 'Telescope find in current buffer' })
+    vim.keymap.set('n', '<leader>ep', function()
+      builtin.find_files {
+        cwd = vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy')
+      }
+    end)
+
+    require 'okwonks.config.telescope.multigrep'.setup()
   end
 }
