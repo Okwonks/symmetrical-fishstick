@@ -50,7 +50,7 @@ for binary in "${binaries[@]}"; do
 done
 
 # List of applications to install
-apps=(docker google-chrome google-cloud-sdk iterm2 neovim pgadmin4 spotify visual-studio-code)
+apps=(docker firefox google-chrome google-cloud-sdk iterm2 neovim pgadmin4 spotify visual-studio-code)
 for app in "${apps[@]}"; do
   if brew list --cask | grep -q "^$app\$"; then
     log "$app is already installed. Skipping..."

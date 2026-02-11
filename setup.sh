@@ -24,11 +24,14 @@ if [ ! -f "$repodir" ]; then
   git clone https://github.com/Okwonks/symmetrical-fishstick.git "${HOME}"
 fi
 
-configFiles=(vimrc zshrc)
+configFiles=(vimrc zshrc tmux.conf)
 for file in "${configFiles[@]}"; do
   log "Creating symlink to .$file in home..."
   ln -sf "$repodir/.$file" "${HOME}/.$file"
 done
+
+log "Setting up tmux dir..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 pushd "$repodir" >/dev/null
 
