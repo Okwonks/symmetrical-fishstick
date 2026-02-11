@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 
 log() {
-  ehco "[brew] $*"
+  echo "[brew] $*"
 }
 
 log "Checking for homebrew..."
