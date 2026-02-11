@@ -39,7 +39,7 @@ if ! grep -F -q "$(brew --prefix)/bin/bash" /etc/shells; then
 fi
 
 # Install some useful binaries
-binaries=(bat fzf htop jq neovim nvm ripgrep shellcheck tree wget)
+binaries=(bat fzf htop jq neovim nvm ripgrep shellcheck tree wget go)
 for binary in "${binaries[@]}"; do
   if brew list --formula | grep -q "^$binary\$"; then
     log "$binary is already installed. Skipping..."

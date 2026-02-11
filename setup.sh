@@ -19,7 +19,7 @@ EOF
 repodir="${HOME}/symmetrical-fishstick"
 
 # Check if dir exists, if not download/clone the repo
-if [ ! -f "$repodir" ]; then
+if [ ! -d "$repodir" ]; then
   log "Dotfiles dir not found.  Cloning..."
   git clone https://github.com/Okwonks/symmetrical-fishstick.git "${HOME}"
 fi
@@ -27,7 +27,7 @@ fi
 configFiles=(vimrc zshrc tmux.conf)
 for file in "${configFiles[@]}"; do
   log "Creating symlink to .$file in home..."
-  ln -sf "$repodir/.$file" "${HOME}/.$file"
+  ln -sf "$repodir/$file" "${HOME}/.$file"
 done
 
 log "Setting up tmux dir..."
