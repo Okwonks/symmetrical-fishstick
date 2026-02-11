@@ -39,7 +39,7 @@ if ! grep -F -q "$(brew --prefix)/bin/bash" /etc/shells; then
 fi
 
 # Install some useful binaries
-binaries=(bat fzf htop jq neovim nvm ripgrep shellcheck tree wget go)
+binaries=(bat fzf htop jq neovim nvm neovim ripgrep shellcheck tree wget go)
 for binary in "${binaries[@]}"; do
   if brew list --formula | grep -q "^$binary\$"; then
     log "$binary is already installed. Skipping..."
@@ -50,7 +50,7 @@ for binary in "${binaries[@]}"; do
 done
 
 # List of applications to install
-apps=(docker firefox google-chrome google-cloud-sdk iterm2 neovim pgadmin4 spotify visual-studio-code)
+apps=(docker firefox google-chrome google-cloud-sdk iterm2 pgadmin4 spotify visual-studio-code)
 for app in "${apps[@]}"; do
   if brew list --cask | grep -q "^$app\$"; then
     log "$app is already installed. Skipping..."
