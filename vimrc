@@ -88,6 +88,8 @@ colorscheme onedark
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 nnoremap <silent> ,<Space> :noh<CR>
 nnoremap <silent> <C-f> :FZF<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
