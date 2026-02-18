@@ -10,7 +10,9 @@ end
 return {
   {
     "Mofiqul/vscode.nvim",
+    lazy = false,
     name = "vscode",
+    priority = 1001, -- make sure to load this before all the other start plugins
     config = function()
       local c = require('vscode.colors').get_colors()
       require("vscode").setup({
@@ -59,8 +61,6 @@ return {
       require("onedark").setup({
         style = "darker"
       })
-
-      ColorTheWorld()
     end
   }
 }
